@@ -19,9 +19,9 @@ function App() {
           </p>
 
           <div className="home-links">
-            <a href="#">View Figma File</a>
-            <a href="#">View GitHub Repository</a>
-            <a href="#">Documentation (Zeroheight)</a>
+            <a href="https://www.figma.com/community/file/1611061497603272825">View Figma File</a>
+            <a href="https://github.com/CalamityJaneDoe/boadicea_design_system">View GitHub Repository</a>
+            <a href="https://zeroheight.com/83e7dd7f3">Documentation (Zeroheight)</a>
           </div>
 
           <p className="home-footer">
