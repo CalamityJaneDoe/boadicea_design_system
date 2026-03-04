@@ -1,42 +1,80 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: inherit;
+    color: inherit;
+    text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.home-content {
+    max-width: 720px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home-title {
+    font-size: clamp(2.5rem, 6vw, 3rem);
+    line-height: 1.2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.home-title span {
+    color: #500221;
 }
 
-.card {
-  padding: 2em;
+.home-subtitle {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    color: #850337;
 }
 
-.read-the-docs {
-  color: #888;
+.home-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: inherit;
+    margin: 0;
+}
+
+.home-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.home-links a {
+    display: inline-block;
+    padding: 0.65em 1.2em;
+    border-radius: 8px;
+    background-color: #500221;
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.25s, color 0.25s;
+}
+
+.home-links a:hover,
+.home-links a:focus {
+    background-color: #041F37;
+    color: #ffffff;
+    outline: none;
+}
+
+.home-footer {
+    font-size: 0.875rem;
+    color: #888888;
+}
+
+/* Responsive spacing pour petits écrans */
+@media (max-width: 480px) {
+    .home-container {
+        padding: 1.5rem;
+    }
+    .home-links {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
 }
