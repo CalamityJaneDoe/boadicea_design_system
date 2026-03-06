@@ -1,7 +1,39 @@
-import "./Button.css";
-import type {ButtonProps} from "./Button.types.ts";
+import { cn } from "../../utils/classNames";
+import styles from "./Button.module.css";
+import type { ButtonProps } from "./Button.types";
 
-// export function Button({ children, variant = "primary" }: ButtonProps) {
-//   return <button className={`button button-${variant}`}>{children}</button>;
-// }
+export function Button({
+  children,
+  icon,
+  iconPosition = "left",
+  variant = "primary",
+  className,
+  disabled,
+  ...props
+}: ButtonProps) {
+  const isIconOnly = icon && !children;
 
+  return (
+    <button
+      className={cn(
+        styles.button,
+        styles[`button-${variant}`],
+        isIconOnly && styles.iconOnly,
+        className,
+      )}
+      disabled={disabled}
+      aria-disabled={disabled}
+      {...props}
+    >
+      {icon && iconPosition === "left" && (
+        <span className={styles.icon}>{icon}</span>
+      )}
+
+      {children && <span className={styles.label}>{children}</span>}
+
+      {icon && iconPosition === "right" && (
+        <span className={styles.icon}>{icon}</span>
+      )}
+    </button>
+  );
+}

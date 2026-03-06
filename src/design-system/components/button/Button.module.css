@@ -1,0 +1,103 @@
+.button {
+  width: 132px;
+  height: 44px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+
+  border: none;
+  cursor: pointer;
+
+  color: white;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+/* focus accessibility */
+
+.button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* icon */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  display: inline-flex;
+}
+
+/* icon only */
+
+.iconOnly {
+  width: 44px;
+  padding: 0;
+}
+
+/* VARIANTS */
+
+.button-primary {
+  background: var(--color-primary);
+}
+
+.button-primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.button-secondary {
+  background: var(--color-secondary);
+}
+
+.button-secondary:hover:not(:disabled) {
+  background: var(--color-secondary-hover);
+}
+
+.button-accent {
+  background: var(--color-accent);
+}
+
+.button-accent:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+
+.button-positive {
+  background: var(--color-positive);
+}
+
+.button-positive:hover:not(:disabled) {
+  background: var(--color-positive-hover);
+}
+
+.button-danger {
+  background: var(--color-danger);
+}
+
+.button-danger:hover:not(:disabled) {
+  background: var(--color-danger-hover);
+}
+
+/* disabled */
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}

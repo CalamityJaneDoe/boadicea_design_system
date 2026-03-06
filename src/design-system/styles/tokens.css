@@ -1,6 +1,16 @@
 :root {
-  --color-primary: #041f37;
-  --color-primary-hover: #063057;
+  --color-primary: #500221;
+  --color-primary-hover: #770332;
+  --color-secondary: #850337;
+  --color-secondary-hover: #b4044a;
+  --color-accent: #041f37;
+  --color-accent-hover: #07365f;
+  --color-positive: #0f300b;
+  --color-positive-hover: #195313;
+  --color-danger: #880707;
+  --color-danger-hover: #ae0909;
+  --color-warning: #cba20d;
+  --color-warning-hover: #f0c219;
 
   --color-text: #1a1a1a;
   --color-background: #ffffff;
