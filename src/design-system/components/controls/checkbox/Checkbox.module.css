@@ -1,23 +1,23 @@
 /* ================= Checkbox Wrapper ================= */
 .checkboxWrapper {
   display: flex;
-  align-items: center; /* centre le texte avec la checkbox */
-  gap: 8px; /* distance entre checkbox et label */
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
   position: relative;
 }
 
 /* ================= Checkbox Style ================= */
 .checkboxWrapper input[type="checkbox"] {
-  appearance: none; /* retire le style natif */
+  appearance: none;
   width: 20px;
   height: 20px;
   border: 2px solid #aaa;
   border-radius: 4px;
   position: relative;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* légère ombre portée */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: all 0.2s ease; /* animation douce */
+  transition: all 0.2s ease;
   background-color: white;
 }
 
@@ -55,6 +55,6 @@
 
 /* ================= Label Text ================= */
 .labelText {
-  user-select: none; /* empêche la sélection accidentelle */
+  user-select: none;
   font-size: 16px;
 }

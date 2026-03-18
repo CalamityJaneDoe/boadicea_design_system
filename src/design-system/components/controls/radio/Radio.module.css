@@ -1,0 +1,50 @@
+/* ================= Radio Wrapper ================= */
+.radioWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* ================= Radio Style ================= */
+.radioWrapper input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #aaa;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: white;
+  display: grid;
+  place-items: center;
+}
+
+/* Inner circle */
+.radioWrapper input[type="radio"]::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+/* Checked */
+.radioWrapper input[type="radio"]:checked {
+  border-color: var(--color-accent);
+}
+
+/* Affiche le point */
+.radioWrapper input[type="radio"]:checked::after {
+  transform: scale(1);
+}
+
+/* ================= Label Text ================= */
+.labelText {
+  user-select: none;
+  font-size: 16px;
+}
