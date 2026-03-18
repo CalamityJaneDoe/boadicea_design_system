@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "./Button";
 import { Coffee } from "lucide-react";
+import React from "react";
+import { Checkbox } from "../controls/checkbox";
 
 const meta = {
   title: "Design System/Button",

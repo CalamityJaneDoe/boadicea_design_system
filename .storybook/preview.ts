@@ -4,6 +4,7 @@ import "../src/design-system/styles/index.css";
 const preview: Preview = {
   parameters: {
     controls: {
+      backgrounds :  { disable: true },
       matchers: {
        color: /(background|color)$/i,
        date: /Date$/i,

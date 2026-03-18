@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [react()],
   test: {
     projects: [
-      // Project Storybook
+      // Project Storybook tests
       {
         extends: true,
         plugins: [
