@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from "vitest";
 import { Button } from "../Button.tsx";
 import { Coffee } from "lucide-react";
 import renderer from "react-test-renderer";
-import type {ButtonProps} from "../Button.types.ts";
+import type { ButtonProps } from "../Button.types.ts";
 
 const variants = [
   "primary",
