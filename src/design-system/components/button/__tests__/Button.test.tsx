@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from "vitest";
 import { Button } from "../Button.tsx";
 import { Coffee } from "lucide-react";
 import renderer from "react-test-renderer";
+import type {ButtonProps} from "../Button.types.ts";
 
 const variants = [
   "primary",
@@ -20,7 +21,7 @@ describe("Button - Design System", () => {
         const title = `${design} - ${variant}`;
 
         it(`renders correctly (${title})`, () => {
-          const props: any = { variant };
+          const props: ButtonProps = { variant };
           if (design === "labelOnly") props.children = "Click me";
           if (design === "iconOnly") {
             props.icon = <Coffee data-testid="icon" />;
@@ -54,7 +55,7 @@ describe("Button - Design System", () => {
         });
 
         it(`handles disabled state (${title})`, () => {
-          const props: any = { variant, disabled: true };
+          const props: ButtonProps = { variant, disabled: true };
           if (design === "labelOnly") props.children = "Click me";
           if (design === "iconOnly") {
             props.icon = <Coffee data-testid="icon" />;
@@ -78,7 +79,7 @@ describe("Button - Design System", () => {
 
         it(`handles click event (${title})`, () => {
           const handleClick = vi.fn();
-          const props: any = { variant, onClick: handleClick };
+          const props: ButtonProps = { variant, onClick: handleClick };
           if (design === "labelOnly") props.children = "Click me";
           if (design === "iconOnly") {
             props.icon = <Coffee data-testid="icon" />;
