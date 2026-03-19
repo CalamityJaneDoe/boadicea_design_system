@@ -1,0 +1,18 @@
+services:
+  boadicea-ds:
+    build: .
+    container_name: boadicea-ds
+
+    ports:
+      - "5173:5173" # Vite
+      - "6006:6006" # Storybook
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+    stdin_open: true
+    tty: true

@@ -9,6 +9,10 @@ import { playwright } from '@vitest/browser-playwright';
 const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  server: {
+    host: true, // Conf. for Docker
+    port: 5173,
+  },
   plugins: [react()],
   test: {
     projects: [
