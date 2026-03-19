@@ -11,13 +11,9 @@
 * Accessible by default (WCAG-friendly)
 * Robust and scalable
 
----
-
 ## Resources
 - Figma: https://www.figma.com/community/file/1611061497603272825
 - Zeroheight: https://zeroheight.com/83e7dd7f3
-
----
 
 ## Getting Started (Docker)
 
@@ -52,17 +48,14 @@ docker compose run boadicea-ds npm run test
 docker compose run boadicea-ds npm run lint
 docker compose run boadicea-ds npm run format
 ```
----
 
-Notes
+## Notes
 
 Hot reload is enabled via volume mounting
 CHOKIDAR_USEPOLLING=true ensures file watching works in Docker
 Vite requires host: true in vite.config.ts
 
----
-
-Tech Stack
+## Tech Stack
 
 * React
 * TypeScript
