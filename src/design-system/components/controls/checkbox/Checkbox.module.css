@@ -22,8 +22,8 @@
 }
 
 /* Focus WCAG-friendly */
-.checkboxWrapper input[type="checkbox"]:focus {
-  outline: 3px solid var(--color-accent);
+.checkboxWrapper input[type="checkbox"]:focus-visible {
+  outline: 3px solid var(--component-color);
   outline-offset: 2px;
 }
 
@@ -42,10 +42,10 @@
   transition: all 0.2s ease;
 }
 
-/* Checked */
+/*Checked */
 .checkboxWrapper input[type="checkbox"]:checked {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
+  background-color: var(--component-color);
+  border-color: var(--component-color);
 }
 
 .checkboxWrapper input[type="checkbox"]:checked::after {

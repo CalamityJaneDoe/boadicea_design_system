@@ -1,0 +1,116 @@
+/* ================= Wrapper ================= */
+.stepper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: system-ui, sans-serif;
+}
+
+/* ================= Label ================= */
+.stepper label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Label text */
+.stepper label > span:first-child {
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 16px;
+}
+
+/* ================= Controls Container ================= */
+.stepperControls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--component-color) 70%, transparent);
+
+  background-color: white;
+}
+
+/* ================= Quantity ================= */
+.stepperValue {
+  min-width: 32px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+
+  font-variant-numeric: tabular-nums;
+}
+
+/* ================= Buttons ================= */
+.stepperControls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 6px;
+  border: none;
+
+  background-color: color-mix(in srgb, var(--component-color) 80%, transparent);
+  cursor: pointer;
+
+  transition: background-color 0.15s ease;
+}
+
+.stepperControls button:hover {
+  background-color: color-mix(in srgb, #000 10%, transparent);
+}
+
+.stepperControls button:active {
+  background-color: color-mix(in srgb, #000 15%, transparent);
+}
+
+/* Disabled (si tu ajoutes plus tard) */
+.stepperControls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ================= Focus ================= */
+.stepperControls button:focus-visible {
+  outline: 2px solid var(--component-color);
+  outline-offset: 2px;
+}
+
+/* ================= Limit text ================= */
+.stepperLimit {
+  font-size: 14px;
+  color: #666;
+  padding-left: 16px; /* aligné avec label */
+}
+
+/* ================= RTL ================= */
+[dir="rtl"] .stepper label > span:first-child,
+[dir="rtl"] .stepperLimit {
+  padding-left: 0;
+  padding-right: 16px;
+}
+
+[dir="rtl"] .stepperControls {
+  flex-direction: row-reverse;
+}
+
+/* ================= DISABLED ================= */
+.stepper[data-disabled="true"] .stepperControls {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.stepper[data-disabled="true"] .stepperControls button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.stepper[data-disabled="true"] .stepperValue {
+  opacity: 0.5;
+}

@@ -22,20 +22,25 @@
   place-items: center;
 }
 
+.radioWrapper input[type="radio"]:focus-visible {
+  outline: 3px solid var(--component-color);
+  outline-offset: 2px;
+}
+
 /* Inner circle */
 .radioWrapper input[type="radio"]::after {
   content: "";
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: var(--color-accent);
+  background-color: var(--component-color);
   transform: scale(0);
   transition: transform 0.2s ease;
 }
 
 /* Checked */
 .radioWrapper input[type="radio"]:checked {
-  border-color: var(--color-accent);
+  border-color: var(--component-color);
 }
 
 /* Affiche le point */

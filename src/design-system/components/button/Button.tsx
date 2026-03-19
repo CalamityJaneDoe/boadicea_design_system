@@ -6,7 +6,7 @@ export function Button({
   children,
   icon,
   iconPosition = "left",
-  variant = "primary",
+  variant = "accent",
   className,
   disabled,
   ...props
@@ -15,12 +15,8 @@ export function Button({
 
   return (
     <button
-      className={cn(
-        styles.button,
-        styles[`button-${variant}`],
-        isIconOnly && styles.iconOnly,
-        className,
-      )}
+      data-variant={variant}
+      className={cn(styles.button, isIconOnly && styles.iconOnly, className)}
       disabled={disabled}
       aria-disabled={disabled}
       {...props}

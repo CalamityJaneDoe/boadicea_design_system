@@ -15,6 +15,41 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+export const Default: Story = {
+  args: {
+    children: "Button",
+  },
+};
+
+export const Icon: Story = {
+  args: {
+    children: "Button",
+    icon: <Coffee />,
+  },
+};
+
+export const IconRight: Story = {
+  args: {
+    children: "Button",
+    icon: <Coffee />,
+    iconPosition: "right",
+  },
+};
+
+export const IconOnly: Story = {
+  args: {
+    icon: <Coffee />,
+    "aria-label": "Coffee Button",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    children: "Disabled",
+    disabled: true,
+  },
+};
+
 export const Primary: Story = {
   args: {
     children: "Button",
@@ -47,26 +82,5 @@ export const Danger: Story = {
   args: {
     children: "Button",
     variant: "danger",
-  },
-};
-
-export const WithIcon: Story = {
-  args: {
-    children: "Button",
-    icon: <Coffee />,
-  },
-};
-
-export const IconOnly: Story = {
-  args: {
-    icon: <Coffee />,
-    "aria-label": "Coffee Button",
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    children: "Disabled",
-    disabled: true,
   },
 };

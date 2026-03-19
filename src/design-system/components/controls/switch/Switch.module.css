@@ -52,7 +52,7 @@
 
 /* ================= Checked ================= */
 .input:checked + .track {
-  background-color: var(--color-accent);
+  background-color: var(--component-color);
 }
 
 .input:checked + .track .thumb {
@@ -70,7 +70,7 @@
 }
 
 .input:focus-visible + .track {
-  outline: 3px solid var(--color-accent);
+  outline: 3px solid var(--component-color);
   outline-offset: 2px;
 }
 

@@ -5,6 +5,7 @@ import type { SwitchProps } from "./Switch.types";
 
 export function Switch({
   label,
+  variant = "accent",
   switchPosition = "left",
   description,
   className,
@@ -39,7 +40,7 @@ export function Switch({
   const stateLabel = isChecked ? onLabel : offLabel;
 
   return (
-    <div className={cn(styles.wrapper, className)}>
+    <div data-variant={variant} className={cn(styles.wrapper, className)}>
       <label htmlFor={switchId} className={styles.container}>
         {/* LABEL LEFT */}
         {switchPosition === "right" && (

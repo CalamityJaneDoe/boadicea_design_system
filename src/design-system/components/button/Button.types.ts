@@ -1,18 +1,10 @@
 import { ReactNode, ButtonHTMLAttributes } from "react";
-
-export type ButtonVariant =
-  | "primary"
-  | "secondary"
-  | "accent"
-  | "positive"
-  | "danger";
-
-export type IconPosition = "left" | "right";
+import { VariantExtended, Position } from "../../utils/Common.types.ts";
 
 export type ButtonProps = {
   children?: ReactNode;
   icon?: ReactNode;
-  iconPosition?: IconPosition;
-  variant?: ButtonVariant;
+  iconPosition?: Position;
+  variant?: VariantExtended;
   className?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;

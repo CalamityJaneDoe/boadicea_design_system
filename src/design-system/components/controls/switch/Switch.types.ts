@@ -1,10 +1,10 @@
 import type { InputHTMLAttributes } from "react";
-
-export type SwitchPosition = "left" | "right";
+import { Variant, Position } from "../../../utils/Common.types.ts";
 
 export type SwitchProps = {
   label: string;
-  switchPosition: SwitchPosition;
+  variant?: Variant;
+  switchPosition?: Position;
   description?: string;
   showState?: boolean;
   onLabel?: string;

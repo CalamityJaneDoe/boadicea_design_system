@@ -97,16 +97,26 @@ export const WithHintAndError: Story = {
   ),
 };
 
-// export const Controlled: Story = {
-//   render: () => {
-//     const [checked, setChecked] = React.useState(false);
-//
-//     return (
-//       <Radio
-//         label="Latte"
-//         checked={checked}
-//         onChange={(e) => setChecked(e.target.checked)}
-//       />
-//     );
-//   },
-// };
+export const Primary: Story = {
+  args: {
+    label: "Latte",
+    variant: "primary",
+    checked: true,
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    label: "Latte",
+    variant: "secondary",
+    checked: true,
+  },
+};
+
+export const Accent: Story = {
+  args: {
+    label: "Latte",
+    variant: "accent",
+    checked: true,
+  },
+};

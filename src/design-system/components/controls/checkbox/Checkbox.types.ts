@@ -1,9 +1,9 @@
 import type { InputHTMLAttributes } from "react";
-
-export type CheckboxPosition = "left" | "right";
+import type { Variant, Position } from "../../../utils/Common.types.ts";
 
 export type CheckboxProps = {
   label: string;
-  checkboxPosition?: CheckboxPosition;
+  variant?: Variant;
+  checkboxPosition?: Position;
   className?: string;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, "type">;

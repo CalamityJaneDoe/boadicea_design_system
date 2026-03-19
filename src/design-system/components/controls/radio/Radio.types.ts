@@ -1,9 +1,9 @@
 import type { InputHTMLAttributes } from "react";
-
-export type RadioPosition = "left" | "right";
+import { Variant, Position } from "../../../utils/Common.types.ts";
 
 export type RadioProps = {
   label: string;
-  RadioPosition?: RadioPosition;
+  variant?: Variant;
+  radioPosition?: Position;
   className?: string;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, "type">;

@@ -47,3 +47,27 @@ export const WithDescription: Story = {
     description: "Turn on this option to use dark mode.",
   },
 };
+
+export const Primary: Story = {
+  args: {
+    label: "Dark Mode",
+    variant: "primary",
+    checked: true,
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    label: "Dark Mode",
+    variant: "secondary",
+    checked: true,
+  },
+};
+
+export const Accent: Story = {
+  args: {
+    label: "Dark Mode",
+    variant: "accent",
+    checked: true,
+  },
+};

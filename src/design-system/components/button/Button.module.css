@@ -17,6 +17,7 @@
   border: none;
   cursor: pointer;
 
+  background: var(--component-color);
   color: white;
 
   transition:
@@ -25,10 +26,14 @@
     box-shadow 0.2s ease;
 }
 
+.button:hover:not(:disabled) {
+  background: var(--component-color-hover);
+}
+
 /* focus accessibility */
 
 .button:focus-visible {
-  outline: 2px solid var(--color-focus);
+  outline: 2px solid var(--component-color);
   outline-offset: 2px;
 }
 
@@ -49,48 +54,6 @@
 .iconOnly {
   width: 44px;
   padding: 0;
-}
-
-/* VARIANTS */
-
-.button-primary {
-  background: var(--color-primary);
-}
-
-.button-primary:hover:not(:disabled) {
-  background: var(--color-primary-hover);
-}
-
-.button-secondary {
-  background: var(--color-secondary);
-}
-
-.button-secondary:hover:not(:disabled) {
-  background: var(--color-secondary-hover);
-}
-
-.button-accent {
-  background: var(--color-accent);
-}
-
-.button-accent:hover:not(:disabled) {
-  background: var(--color-accent-hover);
-}
-
-.button-positive {
-  background: var(--color-positive);
-}
-
-.button-positive:hover:not(:disabled) {
-  background: var(--color-positive-hover);
-}
-
-.button-danger {
-  background: var(--color-danger);
-}
-
-.button-danger:hover:not(:disabled) {
-  background: var(--color-danger-hover);
 }
 
 /* disabled */

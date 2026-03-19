@@ -21,4 +21,35 @@
   --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.15);
 
   --font-family: "Open Sans", system-ui, sans-serif;
+
+  /* Component color fallback - accent color */
+  --component-color: var(--color-accent);
+  --component-color-hover: var(--color-accent-hover);
+
+  /* ================= COMPONENT COLOR VARIANTS ================= */
+
+  [data-variant="primary"] {
+    --component-color: var(--color-primary);
+    --component-color-hover: var(--color-primary-hover);
+  }
+
+  [data-variant="secondary"] {
+    --component-color: var(--color-secondary);
+    --component-color-hover: var(--color-secondary-hover);
+  }
+
+  [data-variant="accent"] {
+    --component-color: var(--color-accent);
+    --component-color-hover: var(--color-accent-hover);
+  }
+
+  [data-variant="positive"] {
+    --component-color: var(--color-positive);
+    --component-color-hover: var(--color-positive-hover);
+  }
+
+  [data-variant="danger"] {
+    --component-color: var(--color-danger);
+    --component-color-hover: var(--color-danger-hover);
+  }
 }
