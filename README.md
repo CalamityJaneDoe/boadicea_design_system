@@ -17,7 +17,7 @@ The project runs inside a Docker container.
 docker build -t boadicea-ds .
 ```
 
-2. **Run the container:***
+2. **Run the container:**
 
 ```bash
 docker run -it -p 6006:6006 boadicea-ds
