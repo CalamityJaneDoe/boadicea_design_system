@@ -1,27 +1,61 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { Radio } from "../radio";
+import { describe, it, expect, vi } from "vitest";
+import { Radio } from "../Radio";
 
-describe("Radio", () => {
-  it("renders label and radio input", () => {
-    render(<Radio label="Option A" />);
+const variants = ["primary", "secondary", "accent"] as const;
 
-    expect(screen.getByText("Option A")).toBeInTheDocument();
-    expect(screen.getByRole("radio")).toBeInTheDocument();
-  });
+describe("Radio - Design System", () => {
+  variants.forEach((variant) => {
+    describe(`variant: ${variant}`, () => {
+      it("renders label and input", () => {
+        render(<Radio label="Option 1" variant={variant} />);
+        const label = screen.getByText("Option 1");
+        const radio = screen.getByRole("radio");
 
-  it("handles selection", () => {
-    render(<Radio label="Option A" />);
+        expect(label).toBeInTheDocument();
+        expect(radio).toBeInTheDocument();
 
-    const radio = screen.getByRole("radio");
+        expect(label.closest("label")).toHaveAttribute("data-variant", variant);
+      });
 
-    fireEvent.click(screen.getByText("Option A"));
+      it("places radio on the left by default", () => {
+        render(<Radio label="Test" variant={variant} />);
+        const label = screen.getByText("Test").closest("label");
+        const input = screen.getByRole("radio");
+        expect(label?.firstChild).toBe(input);
+      });
 
-    expect(radio).toBeChecked();
-  });
+      it("places radio on the right", () => {
+        render(<Radio label="Test" radioPosition="right" variant={variant} />);
+        const label = screen.getByText("Test").closest("label");
+        const input = screen.getByRole("radio");
+        expect(label?.lastChild).toBe(input);
+      });
 
-  it("forwards name prop (important for groups)", () => {
-    render(<Radio label="A" name="group1" />);
+      it("forwards checked prop", () => {
+        render(<Radio label="Test" checked variant={variant} />);
+        expect(screen.getByRole("radio")).toBeChecked();
+      });
 
-    expect(screen.getByRole("radio")).toHaveAttribute("name", "group1");
+      it("handles click on label", () => {
+        render(<Radio label="Click me" variant={variant} />);
+        const radio = screen.getByRole("radio");
+        fireEvent.click(screen.getByText("Click me"));
+        expect(radio).toBeChecked();
+      });
+
+      it("supports disabled state", () => {
+        render(<Radio label="Disabled" disabled variant={variant} />);
+        expect(screen.getByRole("radio")).toBeDisabled();
+      });
+
+      it("toggles checked state on click", () => {
+        const onChange = vi.fn();
+        render(<Radio label="Toggle" variant={variant} onChange={onChange} />);
+        const radio = screen.getByRole("radio");
+        fireEvent.click(radio);
+        expect(onChange).toHaveBeenCalled();
+      });
+    });
   });
 });

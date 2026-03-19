@@ -5,7 +5,6 @@ import styles from "./Stepper.module.css";
 import type { StepperProps } from "./Stepper.types";
 import { Button } from "../../button";
 
-
 export function Stepper({
   label,
   variant = "accent",

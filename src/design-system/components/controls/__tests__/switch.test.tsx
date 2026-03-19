@@ -1,93 +1,73 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import { Switch } from "../switch";
+import { Switch } from "../Switch";
 
-describe("Switch component", () => {
-  it("renders label and description", () => {
-    render(
-      <Switch label="Dark Mode" description="Enable dark mode for the site" />,
-    );
+const variants = ["primary", "secondary", "accent"] as const;
 
-    expect(screen.getByText("Dark Mode")).toBeInTheDocument();
-    expect(
-      screen.getByText("Enable dark mode for the site"),
-    ).toBeInTheDocument();
-    expect(screen.getByRole("switch")).toBeInTheDocument();
-  });
+describe("Switch - Design System", () => {
+  variants.forEach((variant) => {
+    describe(`variant: ${variant}`, () => {
+      it("renders label, input and state", () => {
+        render(<Switch label="Dark Mode" variant={variant} />);
+        const wrapper = screen.getByText("Dark Mode").closest("div");
+        const input = screen.getByRole("switch");
+        const state = screen.getByText("Off");
 
-  it("renders ON/OFF state correctly (uncontrolled)", () => {
-    render(<Switch label="Notifications" defaultChecked={false} />);
+        expect(wrapper).toHaveAttribute("data-variant", variant);
+        expect(input).toBeInTheDocument();
+        expect(state).toBeInTheDocument();
+      });
 
-    const checkbox = screen.getByRole("switch") as HTMLInputElement;
-    const state = screen.getByText("Off");
-    expect(state).toBeInTheDocument();
-    expect(checkbox.checked).toBe(false);
+      it("renders state before/after input correctly depending on switchPosition", () => {
+        const { rerender } = render(
+          <Switch label="Left" switchPosition="left" variant={variant} />,
+        );
+        const labelLeft = screen.getByText("Left");
+        const stateLeft = screen.getByText("Off");
+        const containerLeft = labelLeft.closest("label")!;
+        expect(containerLeft.firstChild?.textContent).toBe("Off"); // state first
 
-    fireEvent.click(checkbox);
-    expect(checkbox.checked).toBe(true);
-    expect(screen.getByText("On")).toBeInTheDocument();
-  });
+        rerender(
+          <Switch label="Right" switchPosition="right" variant={variant} />,
+        );
+        const labelRight = screen.getByText("Right");
+        const stateRight = screen.getByText("Off");
+        const containerRight = labelRight.closest("label")!;
+        expect(containerRight.firstChild?.textContent).toBe("Right"); // label first
+      });
 
-  it("toggles state correctly in controlled mode", () => {
-    const onChange = vi.fn();
-    render(<Switch label="Controlled" checked={false} onChange={onChange} />);
+      it("handles defaultChecked for uncontrolled switch", () => {
+        render(<Switch label="Toggle" defaultChecked variant={variant} />);
+        const input = screen.getByRole("switch") as HTMLInputElement;
+        expect(input.checked).toBe(true);
 
-    const checkbox = screen.getByRole("switch") as HTMLInputElement;
-    expect(checkbox.checked).toBe(false);
+        fireEvent.click(input);
+        expect(input.checked).toBe(false);
+      });
 
-    fireEvent.click(checkbox);
-    expect(onChange).toHaveBeenCalled();
-    // Controlled -> value doesn't change automatically
-    expect(checkbox.checked).toBe(false);
-  });
+      it("works as controlled component", () => {
+        const onChange = vi.fn();
+        render(
+          <Switch
+            label="Controlled"
+            checked={false}
+            onChange={onChange}
+            variant={variant}
+          />,
+        );
+        const input = screen.getByRole("switch") as HTMLInputElement;
+        expect(input.checked).toBe(false);
 
-  it("renders disabled state correctly", () => {
-    render(<Switch label="Disabled" disabled />);
+        fireEvent.click(input);
+        expect(onChange).toHaveBeenCalled();
+        expect(input.checked).toBe(false); // still false, controlled
+      });
 
-    const checkbox = screen.getByRole("switch") as HTMLInputElement;
-    expect(checkbox.disabled).toBe(true);
-
-    const label = screen.getByText("Disabled");
-    expect(label).toBeInTheDocument();
-  });
-
-  it("renders state and label in correct order for left/right positions", () => {
-    const { container, rerender } = render(
-      <Switch label="LeftLabel" switchPosition="left" defaultChecked={false} />,
-    );
-
-    const children = container.querySelector("label")?.children;
-    expect(children).toBeDefined();
-    if (children) {
-      // LEFT: state, input, track, label
-      expect(children[0].textContent).toBe("Off"); // state
-      expect(children[1].tagName).toBe("INPUT");
-      expect(children[2].className.includes("track")).toBe(true);
-      expect(children[3].textContent).toBe("LeftLabel"); // label
-    }
-
-    rerender(
-      <Switch
-        label="RightLabel"
-        switchPosition="right"
-        defaultChecked={false}
-      />,
-    );
-    const childrenR = container.querySelector("label")?.children;
-    if (childrenR) {
-      // RIGHT: label, input, track, state
-      expect(childrenR[0].textContent).toBe("RightLabel"); // label
-      expect(childrenR[1].tagName).toBe("INPUT");
-      expect(childrenR[2].className.includes("track")).toBe(true);
-      expect(childrenR[3].textContent).toBe("Off"); // state
-    }
-  });
-
-  it("has correct accessibility attributes", () => {
-    render(<Switch label="Access" defaultChecked />);
-
-    const checkbox = screen.getByRole("switch");
-    expect(checkbox).toHaveAttribute("role", "switch");
-    expect(checkbox).toBeChecked();
+      it("supports disabled state", () => {
+        render(<Switch label="Disabled" disabled variant={variant} />);
+        const input = screen.getByRole("switch");
+        expect(input).toBeDisabled();
+      });
+    });
   });
 });

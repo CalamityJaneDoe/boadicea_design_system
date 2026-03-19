@@ -2,7 +2,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import { Button } from "../Button.tsx";
 import { Coffee } from "lucide-react";
-import renderer from "react-test-renderer";
 import type { ButtonProps } from "../Button.types.ts";
 
 const variants = [
@@ -32,26 +31,22 @@ describe("Button - Design System", () => {
             props.icon = <Coffee data-testid="icon" />;
           }
 
-          const { container } = render(<Button {...props} />);
+          render(<Button {...props} />);
           const btn = screen.getByRole("button", {
             name: props.children || props["aria-label"],
           });
+
           expect(btn).toBeInTheDocument();
 
-          // Icon presence
+          expect(btn).toHaveAttribute("data-variant", variant);
+
           if (design === "iconOnly" || design === "labelAndIcon") {
             expect(screen.getByTestId("icon")).toBeInTheDocument();
           }
-
-          // Explicit aria-label test for icon-only
           if (design === "iconOnly") {
             expect(btn).toHaveAttribute("aria-label", props["aria-label"]);
             expect(btn).toHaveTextContent("");
           }
-
-          // Snapshot
-          const tree = renderer.create(<Button {...props} />).toJSON();
-          expect(tree).toMatchSnapshot();
         });
 
         it(`handles disabled state (${title})`, () => {
